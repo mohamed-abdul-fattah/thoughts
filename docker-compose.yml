@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    image: thoughts-app:1.0.0
+    working_dir: /app
+    command:
+      - php
+      - -S
+      - 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
