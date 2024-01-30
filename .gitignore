@@ -1,1 +1,4 @@
-.idea
+/vendor/
+
+# IDE generated files
+/.idea

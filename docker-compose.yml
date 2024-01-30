@@ -7,6 +7,8 @@ services:
     working_dir: /app
     command:
       - php
+      - -t
+      - /app/public
       - -S
       - 0.0.0.0:8000
     volumes:
