@@ -1,10 +1,8 @@
 <?php
 
-use App\Foundation\Kernel;
+use App\Foundation\Application;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$kernel = new Kernel();
-$app    = $kernel->boot();
-
+$app = new Application();
 $app->run();
