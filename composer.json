@@ -6,5 +6,11 @@
             "email": "csmohamed8@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        },
+        "files": ["src/helpers.php"]
+    },
     "require": {}
 }
