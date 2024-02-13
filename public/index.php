@@ -1,5 +1,10 @@
 <?php
 
+use App\Foundation\Kernel;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
-include __DIR__.'/../src/views/home.phtml';
+$kernel = new Kernel();
+$app    = $kernel->boot();
+
+$app->run();
