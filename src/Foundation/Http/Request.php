@@ -4,15 +4,15 @@ namespace App\Foundation\Http;
 
 class Request
 {
-  private string $pathInfo;
+  private string $uri;
 
   public function __construct()
   {
-    $this->pathInfo = $_SERVER['PATH_INFO'];
+    $this->uri = $_SERVER['REQUEST_URI'];
   }
 
-  public function getPath(): string
+  public function getUri(): string
   {
-    return $this->pathInfo;
+    return $this->uri;
   }
 }
