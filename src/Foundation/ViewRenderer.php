@@ -9,12 +9,13 @@ class ViewRenderer
   public function renderView(string $viewPath, array $args): string
   {
     ob_start();
-    $this->loadView($viewPath);
+    $this->loadView($viewPath, $args);
     return ob_get_clean();
   }
 
-  private function loadView(string $viewPath): void
+  private function loadView(string $viewPath, array $args): void
   {
+    extract($args);
     include self::VIEWS_PATH . $this->resolveViewNotationToPath($viewPath) . '.phtml';
   }
 

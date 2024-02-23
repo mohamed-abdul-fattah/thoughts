@@ -3,8 +3,9 @@ version: "3.9"
 services:
   app:
     build: .
-    image: thoughts-app:1.1.0
+    image: thoughts-app:1.2.0
     working_dir: /app
+    env_file: .env
     command:
       - php
       - -t

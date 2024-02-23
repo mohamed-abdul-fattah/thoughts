@@ -4,5 +4,5 @@ use App\Foundation\Application;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$app = new Application();
+$app = Application::getInstance();
 $app->run();

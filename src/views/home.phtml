@@ -1,17 +1,25 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-  <title>Thoughts | Home</title>
+    <title>الصفحة الرئيسية | المفكرة</title>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<?= stylesheetUrl('application') ?>">
 </head>
 <body>
-<h1>Thoughts</h1>
-<h2>Categories</h2>
+<h1>مرحباً بك في المفكرة</h1>
+<hr>
+<p>
+    الأرفف المتاحة
+</p>
 <ul>
-  <li>
-    <h3>Software</h3>
-    <ul>
-      <li>Note 1</li>
-    </ul>
-  </li>
+    <?php foreach ($shelves as $shelf): ?>
+        <li>
+            <?= $shelf->getTitle() ?>
+        </li>
+    <?php endforeach; ?>
 </ul>
 </body>
 </html>
