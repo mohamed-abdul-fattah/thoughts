@@ -15,9 +15,16 @@
     الأرفف المتاحة
 </p>
 <ul>
+    <?php
+    /**
+     * @var array $shelves
+     * @var \App\Entities\Shelf $shelf
+     * @var \App\ViewHelpers\HomeHelper $helper
+     */
+    ?>
     <?php foreach ($shelves as $shelf): ?>
         <li>
-            <?= $shelf->getTitle() ?>
+            <?= $helper->getTitle($shelf) ?>
         </li>
     <?php endforeach; ?>
 </ul>

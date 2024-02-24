@@ -2,11 +2,14 @@
 
 namespace App\Foundation;
 
+use App\Foundation\Composable\LocaleHelpers;
+use App\Foundation\Composable\PathHelpers;
 use App\Foundation\Http\Request;
 
 class Application
 {
-  private const string APP_ROOT = __DIR__.'/../..';
+  use PathHelpers,
+      LocaleHelpers;
 
   private static ?Application $application = null;
 
@@ -30,16 +33,6 @@ class Application
     $controller       = new $class($this->renderer);
 
     echo call_user_func_array([$controller, $method], []);
-  }
-
-  public function getRootPath(): string
-  {
-    return self::APP_ROOT;
-  }
-
-  public function getConfigPath(): string
-  {
-    return self::APP_ROOT . '/src/config';
   }
 
   private function __construct()

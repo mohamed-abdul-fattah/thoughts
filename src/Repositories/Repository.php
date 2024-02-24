@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Foundation\Database;
 use App\Utils\StringUtils;
-use ReflectionClass;
+use ReflectionException;
 
 abstract class Repository
 {
@@ -12,6 +12,9 @@ abstract class Repository
   private string $entityName;
   private string $tableName;
 
+  /**
+   * @throws ReflectionException
+   */
   public function __construct()
   {
     $this->connection = Database::getInstance();
@@ -22,21 +25,19 @@ abstract class Repository
   public function fetchAll(): array
   {
     return $this->connection->getObjects(
-      "SELECT * FROM {$this->tableName}",
+      "SELECT * FROM `$this->tableName`",
       $this->entityName
     );
   }
 
+  /**
+   * @throws ReflectionException
+   */
   private function getTableName(): string
   {
-    $classPluralName = StringUtils::replace($this->getClassName(), 'Repository', '');
+    $classPluralName = StringUtils::replace(StringUtils::getClassShortName($this), 'Repository', '');
 
     return StringUtils::toLower($classPluralName);
-  }
-
-  private function getClassName(): string
-  {
-    return (new ReflectionClass(get_called_class()))->getShortName();
   }
 
   abstract protected function getEntityName(): string;
