@@ -1,32 +1,43 @@
+<?php
+
+use App\Entities\Shelf;
+use App\ViewHelpers\HomeHelper;
+
+/**
+ * @var array $shelves
+ * @var Shelf $shelf
+ * @var HomeHelper $helper
+ */
+?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <title>الصفحة الرئيسية | المفكرة</title>
-    <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?= stylesheetUrl('application') ?>">
-</head>
+<?php $helper->includePartial('layout/head'); ?>
 <body>
-<h1>مرحباً بك في المفكرة</h1>
-<hr>
-<p>
-    الأرفف المتاحة
-</p>
-<ul>
-    <?php
-    /**
-     * @var array $shelves
-     * @var \App\Entities\Shelf $shelf
-     * @var \App\ViewHelpers\HomeHelper $helper
-     */
-    ?>
-    <?php foreach ($shelves as $shelf): ?>
-        <li>
-            <?= $helper->getTitle($shelf) ?>
-        </li>
-    <?php endforeach; ?>
-</ul>
+    <div class="container">
+        <?php $helper->includePartial('layout/header') ?>
+        <div class="d-flex">
+            <pre dir="ltr">
+                       .--.                   .---.
+                   .---|__|           .-.     |~~~|
+                .--|===|--|_          |_|     |~~~|--.
+                |  |===|  |'\     .---!~|  .--|   |--|
+                |%%|   |  |.'\    |===| |--|%%|   |  |
+                |%%|   |  |\.'\   |   | |__|  |   |  |
+                |  |   |  | \  \  |===| |==|  |   |  |
+                |  |   |__|  \.'\ |   |_|__|  |~~~|__|
+                |  |===|--|   \.'\|===|~|--|%%|~~~|--|
+                ^--^---'--^    `-'`---^-^--^--^---'--'
+            </pre>
+            <div>
+                <ul>
+                    <?php foreach ($shelves as $shelf): ?>
+                        <li>
+                            <h3><?= $helper->getTitle($shelf) ?></h3>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -15,4 +15,9 @@ trait PathHelpers
   {
     return self::APP_ROOT . '/src/config';
   }
+
+  public function getViewPath(): string
+  {
+    return self::APP_ROOT . '/src/views';
+  }
 }

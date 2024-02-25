@@ -1,7 +1,18 @@
+/* Elements */
 body {
     font-family: "Amiri", serif;
     font-weight: 400;
     font-style: normal;
 }
+hr {
+    color: whitesmoke;
+    margin: 1em 2em;
+}
+/* Page structure */
+.container { margin: 0 2em 0 2em }
+/* Colors */
 .text-red { color: red; }
 .text-green { color: green; }
+/* Flex box */
+.d-flex { display: flex; }
+.flex-space-around { justify-content: space-around; }

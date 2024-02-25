@@ -9,7 +9,7 @@ class FileSystem
 {
   public function read(string $pathToFile): array
   {
-    if (!$this->doesExist($pathToFile)) {
+    if (!$this->fileExists($pathToFile)) {
       throw new FileNotFoundException("'{$pathToFile}' is not a file!");
     }
 
@@ -22,7 +22,7 @@ class FileSystem
     return explode("\n", $content);
   }
 
-  public function doesExist(string $pathToFile): bool
+  public function fileExists(string $pathToFile): bool
   {
     return is_file($pathToFile);
   }

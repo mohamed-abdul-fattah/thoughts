@@ -7,8 +7,6 @@ use App\Utils\StringUtils;
 
 class ViewRenderer
 {
-  private const string VIEWS_PATH = __DIR__.'/../views/';
-
   public function renderView(string $viewPath, string $controllerName, array $args): string
   {
     ob_start();
@@ -20,7 +18,7 @@ class ViewRenderer
   {
     extract($args);
     $helper = $this->getViewHelper($controllerName);
-    include self::VIEWS_PATH . $this->resolveViewNotationToPath($viewPath) . '.phtml';
+    include app()->getViewPath() . '/' . $this->resolveViewNotationToPath($viewPath) . '.phtml';
   }
 
   private function resolveViewNotationToPath(string $viewPath): string
@@ -32,7 +30,8 @@ class ViewRenderer
   {
     $domainName = StringUtils::replace($controllerName, 'Controller', '');
     $className  = "\\App\\ViewHelpers\\{$domainName}Helper";
+    $class      = class_exists($className) ? $className : ViewHelper::class;
 
-    return new $className();
+    return new $class(new FileSystem());
   }
 }
