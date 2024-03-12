@@ -17,7 +17,7 @@ function dump(...$vars): void
 
 function stylesheetUrl(string $filename): string
 {
-  return "/assets/css/{$filename}.css";
+  return "/assets/css/$filename.css";
 }
 
 function app(): Application

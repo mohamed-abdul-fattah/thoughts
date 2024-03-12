@@ -9,10 +9,7 @@ use ReflectionException;
 
 abstract class Controller
 {
-  public function __construct(protected ViewRenderer $renderer)
-  {
-    //
-  }
+  public function __construct(private readonly ViewRenderer $renderer) {}
 
   /**
    * @throws ReflectionException
