@@ -4,45 +4,45 @@ namespace App\Entities;
 
 class Shelf
 {
-  private int $id;
-  private string $slug;
-  private string $title_ar;
-  private string $title_en;
-  private string $created_at;
-  private ?string $updated_at;
+    private int $id;
+    private string $slug;
+    private string $title_ar;
+    private string $title_en;
+    private string $created_at;
+    private ?string $updated_at;
 
-  public function __construct()
-  {
-    //
-  }
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
-  public function getSlug(): string
-  {
-    return $this->slug;
-  }
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
 
-  public function getArabicTitle(): string
-  {
-    return $this->title_ar;
-  }
+    public function setSlug(string $slug): void
+    {
+        $this->slug = $slug;
+    }
 
-  public function getEnglishTitte(): string
-  {
-    return $this->title_en;
-  }
+    public function getArabicTitle(): string
+    {
+        return $this->title_ar;
+    }
 
-  public function setSlug(string $slug): void
-  {
-    $this->slug = $slug;
-  }
+    public function getEnglishTitte(): string
+    {
+        return $this->title_en;
+    }
 
-  public function setTitleAr(string $title_ar): void
-  {
-    $this->title_ar = $title_ar;
-  }
+    public function setTitleAr(string $title_ar): void
+    {
+        $this->title_ar = $title_ar;
+    }
 
-  public function setTitleEn(string $title_en): void
-  {
-    $this->title_en = $title_en;
-  }
+    public function setTitleEn(string $title_en): void
+    {
+        $this->title_en = $title_en;
+    }
 }

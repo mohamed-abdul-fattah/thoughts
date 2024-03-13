@@ -1,21 +1,18 @@
 <?php
 
-use App\Entities\Shelf;
-use App\ViewHelpers\HomeHelper;
+use App\ViewHelpers\ViewHelper;
 
 /**
- * @var array $shelves
- * @var Shelf $shelf
- * @var HomeHelper $helper
+ * @var ViewHelper $helper
  */
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <?php $helper->includePartial('layout/head'); ?>
 <body>
-    <div class="container">
-        <?php $helper->includePartial('layout/header') ?>
-        <div class="d-flex">
+<div class="container">
+    <?php $helper->includePartial('layout/header') ?>
+    <div class="d-flex">
             <pre dir="ltr">
                        .--.                   .---.
                    .---|__|           .-.     |~~~|
@@ -28,16 +25,10 @@ use App\ViewHelpers\HomeHelper;
                 |  |===|--|   \.'\|===|~|--|%%|~~~|--|
                 ^--^---'--^    `-'`---^-^--^--^---'--'
             </pre>
-            <div>
-                <ul>
-                    <?php foreach ($shelves as $shelf): ?>
-                        <li>
-                            <a href="/shelves?shelveId=<?= $shelf->getId() ?>" class="t-size-2"><?= $helper->getTitle($shelf) ?></a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
+        <div>
+
         </div>
     </div>
+</div>
 </body>
 </html>

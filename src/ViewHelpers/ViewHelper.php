@@ -5,7 +5,7 @@ namespace App\ViewHelpers;
 use App\Foundation\Exceptions\FileNotFoundException;
 use App\Foundation\FileSystem;
 
-abstract class ViewHelper
+class ViewHelper
 {
   public function __construct(private readonly FileSystem $fileSystem) {}
 

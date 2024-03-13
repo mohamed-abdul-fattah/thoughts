@@ -42,7 +42,7 @@ class Application
     {
         // TODO: Replace with dispatcher
         [$class, $method] = $this->router->getAction($this->request->getUri());
-        $controller = new $class($this->renderer);
+        $controller       = DependencyContainer::resolve($class);
 
         echo call_user_func_array([$controller, $method], []);
     }
