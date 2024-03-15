@@ -16,18 +16,7 @@ use App\ViewHelpers\HomeHelper;
     <div class="container">
         <?php $helper->includePartial('layout/header') ?>
         <div class="d-flex">
-            <pre dir="ltr">
-                       .--.                   .---.
-                   .---|__|           .-.     |~~~|
-                .--|===|--|_          |_|     |~~~|--.
-                |  |===|  |'\     .---!~|  .--|   |--|
-                |%%|   |  |.'\    |===| |--|%%|   |  |
-                |%%|   |  |\.'\   |   | |__|  |   |  |
-                |  |   |  | \  \  |===| |==|  |   |  |
-                |  |   |__|  \.'\ |   |_|__|  |~~~|__|
-                |  |===|--|   \.'\|===|~|--|%%|~~~|--|
-                ^--^---'--^    `-'`---^-^--^--^---'--'
-            </pre>
+            <?php $helper->includePartial('shared/booksArt'); ?>
             <div>
                 <ul>
                     <?php foreach ($shelves as $shelf): ?>

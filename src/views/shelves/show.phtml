@@ -1,9 +1,11 @@
 <?php
 
-use App\ViewHelpers\ViewHelper;
+use App\Entities\Shelf;
+use App\ViewHelpers\ShelvesHelper;
 
 /**
- * @var ViewHelper $helper
+ * @var ShelvesHelper $helper
+ * @var Shelf $shelf
  */
 ?>
 <!DOCTYPE html>
@@ -12,22 +14,9 @@ use App\ViewHelpers\ViewHelper;
 <body>
 <div class="container">
     <?php $helper->includePartial('layout/header') ?>
+    <h2 class="t-size-2"><?= $helper->getTitle($shelf); ?></h2>
     <div class="d-flex">
-            <pre dir="ltr">
-                       .--.                   .---.
-                   .---|__|           .-.     |~~~|
-                .--|===|--|_          |_|     |~~~|--.
-                |  |===|  |'\     .---!~|  .--|   |--|
-                |%%|   |  |.'\    |===| |--|%%|   |  |
-                |%%|   |  |\.'\   |   | |__|  |   |  |
-                |  |   |  | \  \  |===| |==|  |   |  |
-                |  |   |__|  \.'\ |   |_|__|  |~~~|__|
-                |  |===|--|   \.'\|===|~|--|%%|~~~|--|
-                ^--^---'--^    `-'`---^-^--^--^---'--'
-            </pre>
-        <div>
-
-        </div>
+        <?php $helper->includePartial('shared/booksArt') ?>
     </div>
 </div>
 </body>
