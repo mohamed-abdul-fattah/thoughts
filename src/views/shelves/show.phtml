@@ -1,11 +1,13 @@
 <?php
 
+use App\Entities\Notebook;
 use App\Entities\Shelf;
 use App\ViewHelpers\ShelvesHelper;
 
 /**
  * @var ShelvesHelper $helper
  * @var Shelf $shelf
+ * @var Notebook[] $notebooks
  */
 ?>
 <!DOCTYPE html>
@@ -17,6 +19,11 @@ use App\ViewHelpers\ShelvesHelper;
     <h2 class="t-size-2"><?= $helper->getTitle($shelf); ?></h2>
     <div class="d-flex">
         <?php $helper->includePartial('shared/booksArt') ?>
+        <ul>
+            <?php foreach ($notebooks as $notebook): ?>
+                <li><?= $notebook->getTitleEn(); ?></li>
+            <?php endforeach; ?>
+        </ul>
     </div>
 </div>
 </body>

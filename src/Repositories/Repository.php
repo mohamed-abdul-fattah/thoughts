@@ -49,6 +49,20 @@ abstract class Repository
         return $result[0];
     }
 
+    public function findBy(array $conditions)
+    {
+        $whereConditions = [];
+        foreach ($conditions as $column => $value) {
+            $whereConditions[] = "`$column` = $value";
+        }
+
+        $whereClause = join(' AND ', $whereConditions);
+        return $this->connection->getObjects(
+            "SELECT * FROM `$this->tableName` WHERE $whereClause",
+            $this->entityName
+        );
+    }
+
     /**
      * @throws ReflectionException
      */
