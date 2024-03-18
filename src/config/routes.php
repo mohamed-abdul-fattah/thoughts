@@ -1,6 +1,7 @@
 <?php
 
 return [
-    '/'        => 'home@index',
-    '/shelves' => 'shelves@show'
+    '/'               => 'home@index',
+    '/shelves'        => 'shelves@show',
+    '/shelves/create' => 'shelves@create',
 ];

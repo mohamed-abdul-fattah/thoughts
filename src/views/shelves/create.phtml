@@ -1,0 +1,38 @@
+<?php
+
+use App\ViewHelpers\ShelvesHelper;
+
+/**
+ * @var ShelvesHelper $helper
+ * @var int $shelfId
+ */
+?>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<?php $helper->includePartial('layout/head'); ?>
+<body>
+<div class="container">
+    <?php $helper->includePartial('layout/header') ?>
+    <h2 class="t-size-2">أنشئ مفكرة جديدة</h2>
+    <div class="d-flex">
+        <?php $helper->includePartial('shared/booksArt') ?>
+        <div class="form">
+            <form method="post" action="/shelves">
+                <input type="hidden" name="shelfId" value="<?= $shelfId ?>">
+                <div class="form-group">
+                    <label for="titleAr">العنوان بالعربية</label>
+                    <input type="text" id="titleAr" name="titleAr">
+                </div>
+                <div class="form-group">
+                    <label for="titleEn">العنوان بالانجليزية</label>
+                    <input type="text" id="titleEn" name="titleEn">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="حفظ">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

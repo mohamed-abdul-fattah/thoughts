@@ -13,7 +13,7 @@ table {
     width: 100%;
 }
 td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid #ddd;
     text-align: right;
     padding: 1rem;
     border-bottom: none;
@@ -23,7 +23,27 @@ th {
     font-weight: bold;
 }
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #eee;
+}
+input,
+select,
+textarea {
+    width: 100%;
+    max-width: 100%;
+    font: inherit;
+    color: inherit;
+}
+input[type="checkbox"],
+input[type="radio"],
+input[type="submit"],
+input[type="button"] {
+    width: auto;
+}
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    cursor: pointer;
 }
 /* Page structure */
 .container { margin: 0 2em 0 2em }
@@ -37,3 +57,12 @@ tr:nth-child(even) {
 .d-flex { display: flex; }
 .flex-space-around { justify-content: space-around; }
 .flex-space-between { justify-content: space-between; }
+/* Forms */
+.form {
+    background-color: #eee;
+    padding: 1rem;
+    width: 100%;
+}
+.form-group {
+    margin: 1rem;
+}

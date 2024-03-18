@@ -17,4 +17,11 @@ class ShelvesController extends Controller
 
         return $this->render('shelves.show', compact('shelf', 'notebooks'));
     }
+
+    public function createAction(): Response
+    {
+        $shelfId = $this->request->get('shelfId');
+
+        return $this->render('shelves.create', compact('shelfId'));
+    }
 }
