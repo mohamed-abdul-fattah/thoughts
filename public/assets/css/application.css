@@ -6,7 +6,24 @@ body {
 }
 hr {
     color: whitesmoke;
-    margin: 1em 2em;
+    margin: 1em 0;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: right;
+    padding: 1rem;
+    border-bottom: none;
+}
+th {
+    border-top: none;
+    font-weight: bold;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
 /* Page structure */
 .container { margin: 0 2em 0 2em }

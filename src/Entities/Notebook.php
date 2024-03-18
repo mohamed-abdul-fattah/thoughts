@@ -11,13 +11,23 @@ class Notebook extends Entity
     private ?string $updatedAt;
     private int $shelfId;
 
-    public function getTitleAr(): string
+    public function getArabicTitle(): string
     {
         return $this->titleAr;
     }
 
-    public function getTitleEn(): string
+    public function getEnglishTitle(): string
     {
         return $this->titleEn;
+    }
+
+    public function getCreatedAt(): string
+    {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt(): ?string
+    {
+        return $this->updatedAt;
     }
 }

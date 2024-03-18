@@ -16,14 +16,26 @@ use App\ViewHelpers\ShelvesHelper;
 <body>
 <div class="container">
     <?php $helper->includePartial('layout/header') ?>
-    <h2 class="t-size-2"><?= $helper->getTitle($shelf); ?></h2>
+    <h2 class="t-size-2"><?= $helper->getShelfTitle($shelf); ?></h2>
+    <a href="">مفكرة جديدة +</a>
     <div class="d-flex">
         <?php $helper->includePartial('shared/booksArt') ?>
-        <ul>
-            <?php foreach ($notebooks as $notebook): ?>
-                <li><?= $notebook->getTitleEn(); ?></li>
-            <?php endforeach; ?>
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>عنوان المفكرة</th>
+                    <th>تاريخ الإنشاء</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($notebooks as $notebook): ?>
+                    <tr>
+                        <td><?= $helper->getNotebookTitle($notebook); ?></td>
+                        <td><?= $notebook->getCreatedAt(); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
 </div>
 </body>
