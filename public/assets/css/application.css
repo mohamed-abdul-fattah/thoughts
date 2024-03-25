@@ -45,6 +45,9 @@ input[type="submit"],
 input[type="reset"] {
     cursor: pointer;
 }
+a:visited {
+    color: blue;
+}
 /* Page structure */
 .container { margin: 0 2em 0 2em }
 /* Colors */
