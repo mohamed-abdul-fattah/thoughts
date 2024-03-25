@@ -2,9 +2,11 @@
 
 namespace App\Repositories;
 
+use App\Entities\Entity;
 use App\Foundation\Database;
 use App\Repositories\Exceptions\RecordNotFoundException;
 use App\Utils\StringUtils;
+use ReflectionClass;
 use ReflectionException;
 
 abstract class Repository
@@ -63,6 +65,12 @@ abstract class Repository
         );
     }
 
+    public function save(Entity $entity): bool
+    {
+        $columns = $this->getEntityColumns($entity);
+        return $this->connection->insert($this->tableName, $this->excludePrimaryKeyForInsertion($columns));
+    }
+
     /**
      * @throws ReflectionException
      */
@@ -71,5 +79,25 @@ abstract class Repository
         $classPluralName = StringUtils::replace(StringUtils::getClassShortName($this), 'Repository', '');
 
         return StringUtils::toLower($classPluralName);
+    }
+
+    private function getEntityColumns(Entity $entity): array
+    {
+        $cols    = [];
+        $reflect = new ReflectionClass($entity);
+
+        foreach ($reflect->getProperties() as $property) {
+            if ($property->isInitialized($entity)) {
+                $cols[$property->getName()] = $property->getValue($entity);
+            }
+        }
+
+        return $cols;
+    }
+
+    private function excludePrimaryKeyForInsertion(array $columns): array
+    {
+        unset($columns['id']);
+        return $columns;
     }
 }

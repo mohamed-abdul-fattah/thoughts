@@ -50,4 +50,14 @@ class Database
     {
         return $this->connection->query($query, PDO::FETCH_CLASS, $className)->fetchAll();
     }
+
+    public function insert(string $tableName, array $values): bool
+    {
+        $columnNames   = implode(',', array_keys($values));
+        $placeholders  = '?';
+        $placeholders .= str_repeat(',?', count($values) - 1);
+        $stmt          = $this->connection->prepare("INSERT INTO `$tableName` ($columnNames) VALUES ($placeholders)");
+
+        return $stmt->execute(array_values($values));
+    }
 }
