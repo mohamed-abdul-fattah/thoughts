@@ -17,7 +17,7 @@ use App\ViewHelpers\ShelvesHelper;
     <div class="d-flex">
         <?php $helper->includePartial('shared/booksArt') ?>
         <div class="form">
-            <form method="post" action="/shelves">
+            <form method="post" action="/shelves/store">
                 <input type="hidden" name="shelfId" value="<?= $shelfId ?>">
                 <div class="form-group">
                     <label for="titleAr">العنوان بالعربية</label>

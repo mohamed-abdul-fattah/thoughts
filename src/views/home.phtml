@@ -21,7 +21,7 @@ use App\ViewHelpers\HomeHelper;
                 <ul>
                     <?php foreach ($shelves as $shelf): ?>
                         <li>
-                            <a href="/shelves?shelveId=<?= $shelf->getId() ?>" class="t-size-2"><?= $helper->getTitle($shelf) ?></a>
+                            <a href="/shelves?shelfId=<?= $shelf->getId() ?>" class="t-size-2"><?= $helper->getTitle($shelf) ?></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>

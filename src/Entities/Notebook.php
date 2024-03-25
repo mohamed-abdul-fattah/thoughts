@@ -30,4 +30,22 @@ class Notebook extends Entity
     {
         return $this->updatedAt;
     }
+
+    public function setTitleAr(string $titleAr): Notebook
+    {
+        $this->titleAr = $titleAr;
+        return $this;
+    }
+
+    public function setTitleEn(string $titleEn): Notebook
+    {
+        $this->titleEn = $titleEn;
+        return $this;
+    }
+
+    public function setShelfId(int $shelfId): Notebook
+    {
+        $this->shelfId = $shelfId;
+        return $this;
+    }
 }

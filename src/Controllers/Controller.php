@@ -6,6 +6,7 @@ use App\Foundation\Http\Request;
 use App\Foundation\Http\Response;
 use App\Foundation\ViewRenderer;
 use App\Utils\StringUtils;
+use JetBrains\PhpStorm\NoReturn;
 use ReflectionException;
 
 abstract class Controller
@@ -21,5 +22,12 @@ abstract class Controller
     $httpResponse = new Response();
 
     return $httpResponse->setHtml($html);
+  }
+
+  #[NoReturn]
+  protected function redirectToUrl(string $url): void
+  {
+      header("Location: $url");
+      die;
   }
 }
