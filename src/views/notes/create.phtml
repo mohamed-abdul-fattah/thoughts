@@ -1,0 +1,41 @@
+<?php
+
+use App\ViewHelpers\ViewHelper;
+
+/**
+ * @var ViewHelper $helper
+ * @var int $notebookId
+ * @var string $content
+ */
+?>
+    <!DOCTYPE html>
+    <html lang="ar" dir="rtl">
+    <?php $helper->includePartial('layout/head'); ?>
+    <body>
+    <div class="container">
+        <?php $helper->includePartial('layout/header') ?>
+        <h2 class="t-size-2">أنشئ مفكرة جديدة</h2>
+        <a href="/notebooks?notebookId=<?= $notebookId ?>">عودة</a>
+        <div class="d-flex">
+            <?php $helper->includePartial('shared/booksArt') ?>
+            <div class="form">
+                <form method="post" action="/notebooks/notes/store">
+                    <input type="hidden" name="notebookId" value="<?= $notebookId ?>">
+                    <div class="form-group">
+                        <label for="title">العنوان</label>
+                        <input type="text" id="title" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label>المفكرة</label>
+                        <div style="border: 1px solid" class="p-1"><?= $content ?></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="حفظ">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>
+<?php

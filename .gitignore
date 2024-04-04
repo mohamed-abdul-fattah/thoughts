@@ -1,5 +1,6 @@
 /vendor/
 /.env
+/src/views/notes/content.phtml
 
 # IDE generated files
 /.idea
