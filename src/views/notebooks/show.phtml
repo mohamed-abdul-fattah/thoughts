@@ -1,0 +1,38 @@
+<?php
+
+use App\Entities\Notebook;
+use App\ViewHelpers\ViewHelper;
+
+/**
+ * @var ViewHelper $helper
+ * @var Notebook $notebook
+ */
+?>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<?php $helper->includePartial('layout/head'); ?>
+<body>
+<div class="container">
+    <?php $helper->includePartial('layout/header') ?>
+    <h2 class="t-size-2"><?= $notebook->getArabicTitle() ?></h2>
+    <a href="/shelves?shelfId=<?= $notebook->getShelfId() ?>">عودة</a>
+    |
+    <a href="/notebooks/notes/create?notebookId=<?= $notebook->getId() ?>">مفكرة جديدة +</a>
+    <div class="d-flex">
+        <?php $helper->includePartial('shared/booksArt') ?>
+        <table>
+            <thead>
+            <tr>
+                <th>عنوان المفكرة</th>
+                <th>تاريخ الإنشاء</th>
+                <th>تاريخ آخر تعديل</th>
+                <th>الإجراءات</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

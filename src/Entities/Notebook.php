@@ -48,4 +48,14 @@ class Notebook extends Entity
         $this->shelfId = $shelfId;
         return $this;
     }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getShelfId(): int
+    {
+        return $this->shelfId;
+    }
 }

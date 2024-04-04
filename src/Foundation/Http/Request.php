@@ -22,6 +22,11 @@ class Request
         return $this->uri;
     }
 
+    public function has(string $key): bool
+    {
+        return $this->query[$key] ?? $this->post[$key] ?? false;
+    }
+
     public function get(string $key, mixed $default = null): mixed
     {
         return $this->query[$key] ?? $default;

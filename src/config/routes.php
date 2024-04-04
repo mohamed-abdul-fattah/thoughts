@@ -5,4 +5,5 @@ return [
     '/shelves'        => 'shelves@show',
     '/shelves/create' => 'shelves@create',
     '/shelves/store'  => 'shelves@store',
+    '/notebooks'      => 'notebooks@show',
 ];
