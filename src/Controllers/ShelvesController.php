@@ -29,17 +29,17 @@ class ShelvesController extends Controller
 
     public function storeAction(): Response
     {
-        if ($this->request->isPost()) {
-            $notebook = new Notebook();
-            $notebook
-                ->setShelfId($this->request->post('shelfId'))
-                ->setTitleAr($this->request->post('titleAr'))
-                ->setTitleEn($this->request->post('titleEn'));
-
-            (new NotebooksRepository())->save($notebook);
-            $this->redirectToUrl("/shelves?shelfId={$this->request->post('shelfId')}");
+        if (!$this->request->isPost()) {
+            throw new HttpMethodNotAllowedException("{$this->request->getMethod()} is not allowed for this route!");
         }
 
-        throw new HttpMethodNotAllowedException("{$this->request->getMethod()} is not allowed for this route!");
+        $notebook = new Notebook();
+        $notebook
+            ->setShelfId($this->request->post('shelfId'))
+            ->setTitleAr($this->request->post('titleAr'))
+            ->setTitleEn($this->request->post('titleEn'));
+
+        (new NotebooksRepository())->save($notebook);
+        $this->redirectToUrl("/shelves?shelfId={$this->request->post('shelfId')}");
     }
 }

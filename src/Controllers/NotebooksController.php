@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Foundation\Http\Exceptions\HttpInternalServerErrorException;
 use App\Foundation\Http\Response;
 use App\Repositories\NotebooksRepository;
+use App\Repositories\NotesRepository;
 
 class NotebooksController extends Controller
 {
@@ -16,7 +17,8 @@ class NotebooksController extends Controller
 
         $notebookId = $this->request->get('notebookId');
         $notebook   = (new NotebooksRepository())->find($notebookId);
+        $notes      = (new NotesRepository())->findByNotebookId($notebookId);
 
-        return $this->render('notebooks.show', compact('notebook'));
+        return $this->render('notebooks.show', compact('notebook', 'notes'));
     }
 }

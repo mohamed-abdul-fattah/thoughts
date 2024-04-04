@@ -2,9 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Entities\Note;
 use App\Foundation\FileSystem;
 use App\Foundation\Http\Exceptions\HttpInternalServerErrorException;
+use App\Foundation\Http\Exceptions\HttpMethodNotAllowedException;
 use App\Foundation\Http\Response;
+use App\Repositories\NotesRepository;
 
 class NotesController extends Controller
 {
@@ -22,5 +25,22 @@ class NotesController extends Controller
             'notebookId' => $this->request->get('notebookId'),
             'content'    => $content->toString(),
         ]);
+    }
+
+    public function storeAction(): Response
+    {
+        if (!$this->request->isPost()) {
+            throw new HttpMethodNotAllowedException("{$this->request->getMethod()} is not allowed for this route!");
+        }
+
+        $notebookId = $this->request->post('notebookId');
+        $note       = new Note();
+        $note
+            ->setNotebookId($notebookId)
+            ->setTitle($this->request->post('title'))
+            ->setContent($this->request->post('content'));
+
+        (new NotesRepository())->save($note);
+        $this->redirectToUrl("/notebooks?notebookId=$notebookId");
     }
 }

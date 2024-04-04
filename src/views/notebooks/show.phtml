@@ -1,11 +1,13 @@
 <?php
 
+use App\Entities\Note;
 use App\Entities\Notebook;
 use App\ViewHelpers\ViewHelper;
 
 /**
  * @var ViewHelper $helper
  * @var Notebook $notebook
+ * @var Note[] $notes
  */
 ?>
 <!DOCTYPE html>
@@ -30,6 +32,14 @@ use App\ViewHelpers\ViewHelper;
             </tr>
             </thead>
             <tbody>
+                <?php foreach ($notes as $note): ?>
+                    <tr>
+                        <td><?= $note->getTitle() ?></td>
+                        <td><?= $note->getCreatedAt() ?></td>
+                        <td><?= $note->getUpdatedAt() ?></td>
+                        <td>عرض | تعديل | حذف</td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
