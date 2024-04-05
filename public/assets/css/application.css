@@ -54,6 +54,7 @@ a:visited {
 /* Colors */
 .text-red { color: red; }
 .text-green { color: green; }
+.text-grey { color: grey; }
 /* Fonts */
 .t-size-2 { font-size: 2rem; }
 .t-size-4 { font-size: 4rem; }

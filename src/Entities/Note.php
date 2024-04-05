@@ -43,4 +43,19 @@ class Note extends Entity
     {
         return $this->updatedAt;
     }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getNotebookId(): int
+    {
+        return $this->notebookId;
+    }
+
+    public function getContent(): string
+    {
+        return $this->content;
+    }
 }

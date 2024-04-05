@@ -6,11 +6,23 @@ use App\Entities\Note;
 use App\Foundation\FileSystem;
 use App\Foundation\Http\Exceptions\HttpInternalServerErrorException;
 use App\Foundation\Http\Exceptions\HttpMethodNotAllowedException;
+use App\Foundation\Http\Exceptions\HttpNotFoundException;
 use App\Foundation\Http\Response;
 use App\Repositories\NotesRepository;
 
 class NotesController extends Controller
 {
+    public function showAction(): Response
+    {
+        if (!$this->request->has('noteId')) {
+            throw new HttpNotFoundException('Note is not found');
+        }
+
+        $note = (new NotesRepository())->find($this->request->get('noteId'));
+
+        return $this->render('notes.show', compact('note'));
+    }
+
     public function createAction(): Response
     {
         if (!$this->request->has('notebookId')) {

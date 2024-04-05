@@ -19,7 +19,7 @@ use App\ViewHelpers\ViewHelper;
     <h2 class="t-size-2"><?= $notebook->getArabicTitle() ?></h2>
     <a href="/shelves?shelfId=<?= $notebook->getShelfId() ?>">عودة</a>
     |
-    <a href="/notebooks/notes/create?notebookId=<?= $notebook->getId() ?>">مفكرة جديدة +</a>
+    <a href="/notes/create?notebookId=<?= $notebook->getId() ?>">مفكرة جديدة +</a>
     <div class="d-flex">
         <?php $helper->includePartial('shared/booksArt') ?>
         <table>
@@ -33,11 +33,18 @@ use App\ViewHelpers\ViewHelper;
             </thead>
             <tbody>
                 <?php foreach ($notes as $note): ?>
+                    <?php $noteId = $note->getId() ?>
                     <tr>
                         <td><?= $note->getTitle() ?></td>
                         <td><?= $note->getCreatedAt() ?></td>
                         <td><?= $note->getUpdatedAt() ?></td>
-                        <td>عرض | تعديل | حذف</td>
+                        <td>
+                            <a href="/notes?noteId=<?= $noteId ?>">عرض</a>
+                            |
+                            <a href="/notes/edit?noteId=<?= $noteId ?>">تعديل</a>
+                            |
+                            <a href="/notes/delete?noteId=<?= $noteId ?>">حذف</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

@@ -1,0 +1,25 @@
+<?php
+
+use App\Entities\Note;
+use App\ViewHelpers\ViewHelper;
+
+/**
+ * @var ViewHelper $helper
+ * @var Note $note
+ */
+?>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<?php $helper->includePartial('layout/head'); ?>
+<body>
+<div class="container">
+    <?php $helper->includePartial('layout/header') ?>
+    <h2 class="t-size-2"><?= $note->getTitle() ?></h2>
+    <a href="/notebooks?notebookId=<?= $note->getNotebookId() ?>">عودة</a>
+    |
+    <small class="text-grey">بتاريخ <?= $note->getCreatedAt() ?></small>
+    <hr>
+    <div><?= $note->getContent() ?></div>
+</div>
+</body>
+</html>
