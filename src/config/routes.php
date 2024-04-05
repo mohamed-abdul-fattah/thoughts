@@ -10,5 +10,5 @@ return [
     '/notes/store'    => 'notes@store',
     '/notes'          => 'notes@show',
     '/notes/edit'     => 'notes@edit',
-    'notes/delete'    => 'notes@delete',
+    '/notes/delete'    => 'notes@delete',
 ];

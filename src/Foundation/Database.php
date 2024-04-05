@@ -60,4 +60,10 @@ class Database
 
         return $stmt->execute(array_values($values));
     }
+
+    public function execute(string $query, array $values): bool
+    {
+        $stmt = $this->connection->prepare($query);
+        return $stmt->execute($values);
+    }
 }

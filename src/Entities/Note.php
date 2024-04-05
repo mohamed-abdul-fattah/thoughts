@@ -58,4 +58,10 @@ class Note extends Entity
     {
         return $this->content;
     }
+
+    public function setCreatedAt(string $createdAt): Note
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
 }

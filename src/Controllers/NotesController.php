@@ -50,9 +50,32 @@ class NotesController extends Controller
         $note
             ->setNotebookId($notebookId)
             ->setTitle($this->request->post('title'))
-            ->setContent($this->request->post('content'));
+            ->setContent($this->request->post('content'))
+            ->setCreatedAt($this->request->post('createdAt'));
 
         (new NotesRepository())->save($note);
         $this->redirectToUrl("/notebooks?notebookId=$notebookId");
+    }
+
+    /**
+     * @throws HttpNotFoundException
+     * @throws HttpInternalServerErrorException
+     */
+    public function deleteAction(): Response
+    {
+        if (!$this->request->has('noteId')) {
+            throw new HttpNotFoundException('Note is not found');
+        }
+
+        /** @var Note $note */
+        $repository = new NotesRepository();
+        $note       = $repository->find($this->request->get('noteId'));
+        $op         = $repository->delete($note->getId());
+
+        if ($op) {
+            $this->redirectToUrl("/notebooks?notebookId={$note->getNotebookId()}");
+        } else {
+            throw new HttpInternalServerErrorException('Failed to delete note');
+        }
     }
 }

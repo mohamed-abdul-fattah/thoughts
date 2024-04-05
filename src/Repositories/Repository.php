@@ -71,6 +71,12 @@ abstract class Repository
         return $this->connection->insert($this->tableName, $this->excludePrimaryKeyForInsertion($columns));
     }
 
+    public function delete(int $id): bool
+    {
+        $sql = "DELETE FROM `$this->tableName` WHERE `$this->primary`=?";
+        return $this->connection->execute($sql, [$id]);
+    }
+
     /**
      * @throws ReflectionException
      */
