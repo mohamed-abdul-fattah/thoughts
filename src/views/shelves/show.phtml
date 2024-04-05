@@ -25,17 +25,17 @@ use App\ViewHelpers\ShelvesHelper;
                 <tr>
                     <th>عنوان المجلد</th>
                     <th>تاريخ الإنشاء</th>
+                    <th>الإجراءات</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($notebooks as $notebook): ?>
                     <tr>
+                        <td><?= $helper->getNotebookTitle($notebook); ?></td>
+                        <td><?= $helper->humanDate($notebook->getCreatedAt()) ?></td>
                         <td>
-                            <a href="/notebooks?notebookId=<?= $notebook->getId() ?>">
-                                <?= $helper->getNotebookTitle($notebook); ?>
-                            </a>
+                            <a href="/notebooks?notebookId=<?= $notebook->getId() ?>">عرض</a>
                         </td>
-                        <td><?= $notebook->getCreatedAt(); ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

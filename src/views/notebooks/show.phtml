@@ -36,8 +36,8 @@ use App\ViewHelpers\ViewHelper;
                     <?php $noteId = $note->getId() ?>
                     <tr>
                         <td><?= $note->getTitle() ?></td>
-                        <td><?= $note->getCreatedAt() ?></td>
-                        <td><?= $note->getUpdatedAt() ?></td>
+                        <td><?= $helper->humanDate($note->getCreatedAt()) ?></td>
+                        <td><?= $helper->humanDate($note->getUpdatedAt()) ?></td>
                         <td>
                             <a href="/notes?noteId=<?= $noteId ?>">عرض</a>
                             |

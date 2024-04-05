@@ -17,7 +17,7 @@ use App\ViewHelpers\ViewHelper;
     <h2 class="t-size-2"><?= $note->getTitle() ?></h2>
     <a href="/notebooks?notebookId=<?= $note->getNotebookId() ?>">عودة</a>
     |
-    <small class="text-grey">بتاريخ <?= $note->getCreatedAt() ?></small>
+    <small class="text-grey">بتاريخ <?= $helper->humanDate($note->getCreatedAt()) ?></small>
     <hr>
     <div><?= $note->getContent() ?></div>
 </div>
