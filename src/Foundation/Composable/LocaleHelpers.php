@@ -4,7 +4,7 @@ namespace App\Foundation\Composable;
 
 trait LocaleHelpers
 {
-  private string $locale = 'en';
+  private string $locale = 'ar';
 
   public function getLocale(): string
   {

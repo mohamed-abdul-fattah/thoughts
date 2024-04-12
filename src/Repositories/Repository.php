@@ -67,8 +67,16 @@ abstract class Repository
 
     public function save(Entity $entity): bool
     {
-        $columns = $this->getEntityColumns($entity);
-        return $this->connection->insert($this->tableName, $this->excludePrimaryKeyForInsertion($columns));
+        $attributes = $this->getEntityColumns($entity);
+        $columns    = $this->excludePrimaryKey($attributes);
+
+        if ($entity->isPersisted()) {
+            // TODO: add updated_at timestamp
+            return $this->connection->update($this->tableName, $columns, [$this->primary => $entity->getId()]
+            );
+        } else {
+            return $this->connection->insert($this->tableName, $columns);
+        }
     }
 
     public function delete(int $id): bool
@@ -101,7 +109,7 @@ abstract class Repository
         return $cols;
     }
 
-    private function excludePrimaryKeyForInsertion(array $columns): array
+    private function excludePrimaryKey(array $columns): array
     {
         unset($columns['id']);
         return $columns;

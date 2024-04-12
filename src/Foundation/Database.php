@@ -61,6 +61,31 @@ class Database
         return $stmt->execute(array_values($values));
     }
 
+    public function update(string $tableName, array $values, array $conditions = []): bool
+    {
+        /** @noinspection SqlWithoutWhere */
+        $sql  = "UPDATE `$tableName` SET ";
+        $keys = array_keys($values);
+
+        for ($idx = 0; $idx < count($values); $idx++) {
+            $key  = $keys[$idx];
+            $sql .= "`$key`=?";
+            $sql .= $idx === count($values) - 1 ? ' ' : ', ';
+        }
+
+        if (count($conditions) > 0) {
+            $sql .= 'WHERE 1=1 ';
+            foreach ($conditions as $key => $value) {
+                $sql .= "AND `$key`=? ";
+            }
+        }
+
+        $stmt  = $this->connection->prepare($sql);
+        $params = array_merge(array_values($values), array_values($conditions));
+
+        return $stmt->execute($params);
+    }
+
     public function execute(string $query, array $values): bool
     {
         $stmt = $this->connection->prepare($query);

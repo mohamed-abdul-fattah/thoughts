@@ -42,4 +42,28 @@ class ShelvesController extends Controller
         (new NotebooksRepository())->save($notebook);
         $this->redirectToUrl("/shelves?shelfId={$this->request->post('shelfId')}");
     }
+
+    public function editAction(): Response
+    {
+        $shelf = (new ShelvesRepository())->find($this->request->get('shelfId'));
+
+        return $this->render('shelves.edit', compact('shelf'));
+    }
+
+    public function updateAction(): Response
+    {
+        if (!$this->request->isPost()) {
+            throw new HttpMethodNotAllowedException("{$this->request->getMethod()} is not allowed for this route!");
+        }
+
+        /** @var Shelf $shelf */
+        $repository = new ShelvesRepository();
+        $shelf      = $repository->find($this->request->post('shelfId'));
+
+        $shelf->setArabicTitle($this->request->post('titleAr'))
+              ->setEnglishTitle($this->request->post('titleEn'));
+
+        $repository->save($shelf);
+        $this->redirectToUrl("/");
+    }
 }

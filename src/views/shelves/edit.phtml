@@ -1,0 +1,39 @@
+<?php
+
+use App\Entities\Shelf;
+use App\ViewHelpers\ShelvesHelper;
+
+/**
+ * @var ShelvesHelper $helper
+ * @var Shelf $shelf
+ */
+?>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<?php $helper->includePartial('layout/head'); ?>
+<body>
+<div class="container">
+    <?php $helper->includePartial('layout/header') ?>
+    <h2 class="t-size-2">تعديل <?= $helper->getShelfTitle($shelf) ?></h2>
+    <div class="d-flex">
+        <?php $helper->includePartial('shared/booksArt') ?>
+        <div class="form">
+            <form method="post" action="/shelves/update">
+                <input type="hidden" name="shelfId" value="<?= $shelf->getId() ?>">
+                <div class="form-group">
+                    <label for="titleAr">العنوان بالعربية</label>
+                    <input type="text" id="titleAr" name="titleAr" value="<?= $shelf->getArabicTitle() ?>">
+                </div>
+                <div class="form-group">
+                    <label for="titleEn">العنوان بالانجليزية</label>
+                    <input type="text" id="titleEn" name="titleEn" value="<?= $shelf->getEnglishTitte() ?>">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="حفظ">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
