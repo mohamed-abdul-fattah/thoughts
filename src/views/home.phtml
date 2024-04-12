@@ -15,17 +15,32 @@ use App\ViewHelpers\HomeHelper;
 <body>
     <div class="container">
         <?php $helper->includePartial('layout/header') ?>
+        <h2 class="t-size-2">أرفف المكتبة</h2>
+        <a href="">رف جديد +</a>
         <div class="d-flex">
             <?php $helper->includePartial('shared/booksArt'); ?>
-            <div>
-                <ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>عنوان الرف</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <?php foreach ($shelves as $shelf): ?>
-                        <li>
-                            <a href="/shelves?shelfId=<?= $shelf->getId() ?>" class="t-size-2"><?= $helper->getTitle($shelf) ?></a>
-                        </li>
+                        <tr>
+                            <td><?= $helper->getTitle($shelf) ?></td>
+                            <td>
+                                <a href="/shelves?shelfId=<?= $shelf->getId() ?>">عرض</a>
+                                |
+                                <a href="">تعديل</a>
+                                |
+                                <a href="">حذف</a>
+                            </td>
+                        </tr>
                     <?php endforeach; ?>
-                </ul>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
