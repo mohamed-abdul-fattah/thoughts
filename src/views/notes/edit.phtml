@@ -1,0 +1,44 @@
+<?php
+
+use App\Entities\Note;
+use App\ViewHelpers\ViewHelper;
+
+/**
+ * @var ViewHelper $helper
+ * @var Note $note
+ * @var string $content
+ */
+?>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<?php $helper->includePartial('layout/head'); ?>
+<body>
+<div class="container">
+    <?php $helper->includePartial('layout/header') ?>
+    <h2 class="t-size-2">تعديل <?= $note->getTitle() ?></h2>
+    <a href="/notebooks?notebookId=<?= $note->getNotebookId() ?>">عودة</a>
+    <div class="d-flex">
+        <?php $helper->includePartial('shared/booksArt') ?>
+        <div class="form">
+            <form method="post" action="/notes/update">
+                <input type="hidden" name="noteId" value="<?= $note->getId() ?>">
+                <div class="form-group">
+                    <label for="title">العنوان</label>
+                    <input type="text" id="title" name="title" value="<?= $note->getTitle() ?>">
+                </div>
+                <div class="form-group">
+                    <label>المفكرة</label>
+                    <div style="border: 1px solid" class="p-1"><?= $content ?></div>
+                    <input type="hidden" name="content" value="<?= htmlentities($content) ?>">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="حفظ">
+                    &nbsp;
+                    <a href="/notes/edit?noteId=<?= $note->getId() ?>&editing=true">اعرض محتوى الملف</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -4,7 +4,7 @@ namespace App\Entities;
 
 class Note extends Entity
 {
-    private int $id;
+    private ?int $id = null;
     private int $notebookId;
     private string $title;
     private string $content;
@@ -44,7 +44,7 @@ class Note extends Entity
         return $this->updatedAt;
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -62,6 +62,12 @@ class Note extends Entity
     public function setCreatedAt(string $createdAt): Note
     {
         $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    public function setUpdatedAt(string $updatedAt): Note
+    {
+        $this->updatedAt = $updatedAt;
         return $this;
     }
 }

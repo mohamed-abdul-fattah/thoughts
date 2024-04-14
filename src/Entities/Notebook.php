@@ -4,7 +4,7 @@ namespace App\Entities;
 
 class Notebook extends Entity
 {
-    private int $id;
+    private ?int $id = null;
     private string $titleAr;
     private string $titleEn;
     private string $createdAt;
@@ -49,7 +49,7 @@ class Notebook extends Entity
         return $this;
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }

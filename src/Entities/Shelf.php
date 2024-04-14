@@ -4,7 +4,7 @@ namespace App\Entities;
 
 class Shelf extends Entity
 {
-    private int $id;
+    private ?int $id = null;
     private string $slug;
     private string $titleAr;
     private string $titleEn;

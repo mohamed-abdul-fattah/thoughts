@@ -52,4 +52,9 @@ class FileSystem
     {
         return is_file($pathToFile);
     }
+
+    public function write(string $pathToFile, string $content): bool
+    {
+        return file_put_contents($pathToFile, $content) !== false;
+    }
 }
