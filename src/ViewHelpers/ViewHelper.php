@@ -22,4 +22,14 @@ class ViewHelper
 
         include $path;
     }
+
+    public function getLang(): string
+    {
+        return app()->getLocale();
+    }
+
+    public function getDirection(): string
+    {
+        return app()->getLocale() === 'ar' ? 'rtl' : 'ltr';
+    }
 }

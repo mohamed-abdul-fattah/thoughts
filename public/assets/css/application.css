@@ -53,6 +53,9 @@ code {
     padding: 5px;
     border-radius: 5px;
 }
+pre {
+    overflow-x: scroll;
+}
 blockquote {
     font-style: italic;
 }

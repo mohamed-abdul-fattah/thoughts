@@ -9,7 +9,7 @@ use App\ViewHelpers\ViewHelper;
  */
 ?>
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="<?= $helper->getLang() ?>" dir="<?= $helper->getDirection() ?>">
 <?php $helper->includePartial('layout/head'); ?>
 <body>
 <div class="container">
@@ -17,7 +17,7 @@ use App\ViewHelpers\ViewHelper;
     <h2 class="t-size-2"><?= $note->getTitle() ?></h2>
     <a href="/notebooks?notebookId=<?= $note->getNotebookId() ?>">عودة</a>
     |
-    <small class="text-grey">بتاريخ <?= $helper->humanDate($note->getCreatedAt()) ?></small>
+    <span class="text-grey">بتاريخ <?= $helper->humanDate($note->getCreatedAt()) ?></span>
     <hr>
     <div><?= $note->getContent() ?></div>
 </div>
