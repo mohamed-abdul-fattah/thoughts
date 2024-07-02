@@ -48,6 +48,14 @@ input[type="reset"] {
 a:visited {
     color: blue;
 }
+code { 
+    background-color: #ddd;
+    padding: 5px;
+    border-radius: 5px;
+}
+blockquote {
+    font-style: italic;
+}
 /* Page structure */
 .container { margin: 0 2em 0 2em }
 .p-1 { padding: 1em; }
@@ -55,6 +63,7 @@ a:visited {
 .text-red { color: red; }
 .text-green { color: green; }
 .text-grey { color: grey; }
+.mark { background-color: yellow; }
 /* Fonts */
 .t-size-2 { font-size: 2rem; }
 .t-size-4 { font-size: 4rem; }
