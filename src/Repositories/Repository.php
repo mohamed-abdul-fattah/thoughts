@@ -6,6 +6,7 @@ use App\Entities\Entity;
 use App\Foundation\Database;
 use App\Repositories\Exceptions\RecordNotFoundException;
 use App\Utils\StringUtils;
+use DateTime;
 use ReflectionClass;
 use ReflectionException;
 
@@ -51,7 +52,7 @@ abstract class Repository
         return $result[0];
     }
 
-    public function findBy(array $conditions)
+    public function findBy(array $conditions): array
     {
         $whereConditions = [];
         foreach ($conditions as $column => $value) {
@@ -67,15 +68,15 @@ abstract class Repository
 
     public function save(Entity $entity): bool
     {
-        $attributes = $this->getEntityColumns($entity);
-        $columns    = $this->excludePrimaryKey($attributes);
+        $properties = $this->getEntityColumns($entity);
+        $properties = $this->excludePrimaryKey($properties);
+        $properties['updatedAt'] = (new DateTime())->format('Y-m-d H:i:s');
 
         if ($entity->isPersisted()) {
-            // TODO: add updated_at timestamp
-            return $this->connection->update($this->tableName, $columns, [$this->primary => $entity->getId()]
+            return $this->connection->update($this->tableName, $properties, [$this->primary => $entity->getId()]
             );
         } else {
-            return $this->connection->insert($this->tableName, $columns);
+            return $this->connection->insert($this->tableName, $properties);
         }
     }
 
