@@ -2,34 +2,23 @@
 
 namespace App\ViewHelpers;
 
-use App\Foundation\Exceptions\FileNotFoundException;
 use App\Foundation\FileSystem;
-use App\ViewHelpers\Composable\DatesHelper;
+use App\ViewHelpers\Composable\DateHelpers;
+use App\ViewHelpers\Composable\FileHelpers;
+use App\ViewHelpers\Composable\LocaleHelpers;
 
 class ViewHelper
 {
-    use DatesHelper;
+    // TODO: Check whether using composition over inheritance for code organization like these helpers
+    //  while they are not used elsewhere is right or not?
+    use DateHelpers,
+        LocaleHelpers,
+        FileHelpers;
 
     public function __construct(private readonly FileSystem $fileSystem) {}
 
-    public function includePartial(string $filename): void
-    {
-        $path = app()->getViewPath() . "/$filename.phtml";
-
-        if (!$this->fileSystem->fileExists($path)) {
-            throw new FileNotFoundException("'$path' is not a file!");
-        }
-
-        include $path;
-    }
-
-    public function getLang(): string
-    {
-        return app()->getLocale();
-    }
-
     public function getDirection(): string
     {
-        return app()->getLocale() === 'ar' ? 'rtl' : 'ltr';
+        return $this->getLang() === 'ar' ? 'rtl' : 'ltr';
     }
 }

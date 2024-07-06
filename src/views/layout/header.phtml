@@ -1,4 +1,10 @@
-<div>
+<?php
+use App\ViewHelpers\ViewHelper;
+/**
+ * @var ViewHelper $helper
+ */
+?>
+<div dir="rtl">
     <div class="d-flex flex-space-around">
         <h1 class="t-size-4">فَاصِلَةٌ مَنْقُوطَةٌ</h1>
         <div id="logo">
@@ -18,7 +24,7 @@
     </div>
   <nav class="d-flex flex-space-around">
     <a href="/">الرئيسية</a>
-    <span>تغيير اللغة</span>
+    <?= $helper->getLocaleSwitch() ?>
     <span>الإعدادات</span>
   </nav>
   <hr>

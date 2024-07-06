@@ -2,6 +2,7 @@
 
 return [
     '/'               => 'home@index',
+    '/locale/switch'  => 'home@switchLocale',
     '/shelves'        => 'shelves@show',
     '/shelves/create' => 'shelves@create',
     '/shelves/store'  => 'shelves@store',

@@ -4,7 +4,7 @@ namespace App\ViewHelpers\Composable;
 
 use DateTime;
 
-trait DatesHelper
+trait DateHelpers
 {
     /**
      * Converts a given date string to a human-readable format.

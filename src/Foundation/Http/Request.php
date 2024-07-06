@@ -10,11 +10,13 @@ class Request
     private string $uri;
     private array  $query = [];
     private array  $post  = [];
+    public CookiesJar $cookies;
 
     public function __construct()
     {
         $this->processUri();
         $this->getPayload();
+        $this->cookies = new CookiesJar();
     }
 
     public function getUri(): string

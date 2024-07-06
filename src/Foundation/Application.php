@@ -4,6 +4,7 @@ namespace App\Foundation;
 
 use App\Foundation\Composable\LocaleHelpers;
 use App\Foundation\Composable\PathHelpers;
+use App\Foundation\Http\Exceptions\HttpNotFoundException;
 use App\Foundation\Http\Request;
 use ReflectionException;
 
@@ -38,9 +39,30 @@ class Application
         return self::$application;
     }
 
+    /**
+     * @throws ReflectionException
+     * @throws HttpNotFoundException
+     */
     public function run(): void
     {
-        // TODO: Replace with dispatcher
+        $this->initLocale();
+
+        $this->dispatchRequest();
+    }
+
+    private function initLocale(): void
+    {
+        $locale = $this->request->cookies->get('locale', $this->getLocale());
+        $this->setLocale($locale);
+    }
+
+    /**
+     * @return void
+     * @throws HttpNotFoundException
+     * @throws ReflectionException
+     */
+    private function dispatchRequest(): void
+    {
         [$class, $method] = $this->router->getAction($this->request->getUri());
         $controller       = DependencyContainer::resolve($class);
 

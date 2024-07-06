@@ -10,4 +10,9 @@ trait LocaleHelpers
   {
     return $this->locale;
   }
+
+  public function setLocale(string $locale): void
+  {
+      $this->locale = $locale;
+  }
 }
